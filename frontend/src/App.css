@@ -209,6 +209,27 @@ body {
   margin-top: 0.25rem;
 }
 
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px); /* גובה מסך פחות כותרת אם יש */
+  text-align: center;
+}
+
+.home-content {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  margin: 1rem 0 2rem;
+  color: #333;
+}
+
 
 
 
