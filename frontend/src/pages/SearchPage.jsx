@@ -58,7 +58,7 @@ function SearchPage() {
           <input
             value={from}
             onChange={(e) => setFrom(e.target.value)}
-            required
+            
           />
         </div>
 
@@ -67,7 +67,7 @@ function SearchPage() {
           <input
             value={to}
             onChange={(e) => setTo(e.target.value)}
-            required
+            
           />
         </div>
 
@@ -77,7 +77,7 @@ function SearchPage() {
             type="date"
             value={departureDate}
             onChange={(e) => setDepartureDate(e.target.value)}
-            required
+            
           />
         </div>
 
@@ -99,7 +99,7 @@ function SearchPage() {
             value={passengers}
             onChange={(e) => setPassengers(Number(e.target.value))}
             min="1"
-            required
+            
           />
         </div>
 
