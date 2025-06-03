@@ -21,7 +21,11 @@ function SearchPage() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>From:</label>
-          <input value={from} onChange={(e) => setFrom(e.target.value)} required />
+          <input
+            value={from}
+            onChange={(e) => setFrom(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>To:</label>
@@ -29,17 +33,39 @@ function SearchPage() {
         </div>
         <div>
           <label>Departure Date:</label>
-          <input type="date" value={departureDate} onChange={(e) => setDepartureDate(e.target.value)} required />
+          <input
+            type="date"
+            value={departureDate}
+            onChange={(e) => setDepartureDate(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Return Date:</label>
-          <input type="date" value={returnDate} onChange={(e) => setReturnDate(e.target.value)} />
+          <input
+            type="date"
+            value={returnDate}
+            onChange={(e) => setReturnDate(e.target.value)}
+          />
         </div>
         <div>
           <label>Passengers:</label>
-          <input type="number" value={passengers} onChange={(e) => setPassengers(Number(e.target.value))} min="1" required />
+          <input
+            type="number"
+            value={passengers}
+            onChange={(e) => setPassengers(Number(e.target.value))}
+            min="1"
+            required
+          />
         </div>
-        <button type="submit" className="primary-button">Search Flights</button>
+        <button type="submit" className="primary-button">
+          Search Flights
+        </button>
+        <div>
+          <button type="button" onClick={() => navigate("/")}>
+            ← Back to Home
+          </button>
+        </div>
       </form>
     </div>
   );

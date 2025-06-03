@@ -6,6 +6,7 @@ function HomePage() {
 
   return (
     <div className="container home-page">
+
       <div className="home-content">
         <h1 className="page-title">Welcome to SkyBook ✈️</h1>
         <p className="home-subtitle">
