@@ -1,57 +1,237 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
+/* בסיס */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f7f7f7;
+  background-color: #f2f4f8;
+  color: #333;
   margin: 0;
   padding: 0;
 }
 
-form input, form button {
+/* כותרות */
+h1, h2 {
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* מיכל כללי */
+.container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* טופס */
+form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+form div {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+label {
   display: block;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 1rem;
 }
+
+/* כפתורים */
+button {
+  background-color: #4a90e2;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: #357ab8;
+}
+
+
+.flight-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.flight-card:hover {
+  transform: scale(1.01);
+}
+
+.flight-card h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.flight-card p {
+  margin: 0.3rem 0;
+}
+
+.success-message {
+  background-color: #e6ffed;
+  border-left: 6px solid #00b894;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.booking-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.flight-info {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+  margin: auto;
+}
+
+body {
+  background-image: url('./assets/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.back-button {
+  background-color: transparent;
+  border: 2px solid #4a90e2;
+  color: #4a90e2;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.back-button:hover {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.results-header-top {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.primary-button.small {
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ghost-button {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ghost-button:hover {
+  background: white;
+  color: #4a90e2;
+}
+
+.form select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  box-sizing: border-box;
+  margin-top: 0.25rem;
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px); /* גובה מסך פחות כותרת אם יש */
+  text-align: center;
+}
+
+.home-content {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  margin: 1rem 0 2rem;
+  color: #333;
+}
+
+
+
+
+
 

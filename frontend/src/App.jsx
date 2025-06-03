@@ -4,17 +4,17 @@ import SearchPage from './pages/SearchPage';
 import ResultsPage from './pages/ResultsPage';
 import BookingPage from './pages/BookingPage';
 import SuccessPage from './pages/SuccessPage';
+import HomePage from './pages/HomePage';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SearchPage />} />
-        <Route path="/results" element={<ResultsPage />} />
-        <Route path="/booking" element={<BookingPage />} />
-        <Route path="/success" element={<SuccessPage />} />
-      </Routes>
-    </BrowserRouter>
+   return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/search" element={<SearchPage />} />
+      <Route path="/results" element={<ResultsPage />} />
+      <Route path="/booking" element={<BookingPage />} />
+      <Route path="/success" element={<SuccessPage />} />
+    </Routes>
   );
 }
 
