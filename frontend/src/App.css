@@ -229,6 +229,10 @@ body {
   margin: 1rem 0 2rem;
   color: #333;
 }
+form div {
+  margin-bottom: 12px;
+}
+
 
 
 

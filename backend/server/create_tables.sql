@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS flights (
+  id SERIAL PRIMARY KEY,
+  origin TEXT NOT NULL,
+  destination TEXT NOT NULL,
+  departure_time TIMESTAMP NOT NULL,
+  price NUMERIC NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS bookings (
+  id SERIAL PRIMARY KEY,
+  flight_id INTEGER REFERENCES flights(id),
+  customer_name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  booking_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

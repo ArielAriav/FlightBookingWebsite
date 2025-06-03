@@ -1,7 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { getAllFlights } = require('../controllers/flightsController');
+const pool = require('../db'); // או כל חיבור אחר ל-PostgreSQL
 
-router.get('/', getAllFlights);
+router.get('/flights', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM flights');
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch flights' });
+  }
+});
 
 module.exports = router;

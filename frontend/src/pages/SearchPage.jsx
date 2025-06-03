@@ -7,18 +7,51 @@ function SearchPage() {
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [passengers, setPassengers] = useState(1);
+  const [isRoundTrip, setIsRoundTrip] = useState(false);
+
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ from, to, departureDate, returnDate, passengers });
-    navigate("/results");
+
+    try {
+      const response = await fetch("http://localhost:3001/flights");
+      const data = await response.json();
+
+      navigate("/results", {
+        state: {
+          flights: data,
+          search: {
+            from,
+            to,
+            departureDate,
+            returnDate,
+            passengers,
+            isRoundTrip,
+          },
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching flights:", error);
+      alert("Failed to fetch flights. Please try again.");
+    }
   };
 
   return (
     <div className="container">
       <h1>Search Flights</h1>
       <form onSubmit={handleSubmit}>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={isRoundTrip}
+              onChange={() => setIsRoundTrip(!isRoundTrip)}
+            />
+            &nbsp;Round Trip
+          </label>
+        </div>
+
         <div>
           <label>From:</label>
           <input
@@ -27,10 +60,16 @@ function SearchPage() {
             required
           />
         </div>
+
         <div>
           <label>To:</label>
-          <input value={to} onChange={(e) => setTo(e.target.value)} required />
+          <input
+            value={to}
+            onChange={(e) => setTo(e.target.value)}
+            required
+          />
         </div>
+
         <div>
           <label>Departure Date:</label>
           <input
@@ -40,14 +79,19 @@ function SearchPage() {
             required
           />
         </div>
-        <div>
-          <label>Return Date:</label>
-          <input
-            type="date"
-            value={returnDate}
-            onChange={(e) => setReturnDate(e.target.value)}
-          />
-        </div>
+
+        {isRoundTrip && (
+          <div>
+            <label>Return Date:</label>
+            <input
+              type="date"
+              value={returnDate}
+              onChange={(e) => setReturnDate(e.target.value)}
+              required
+            />
+          </div>
+        )}
+
         <div>
           <label>Passengers:</label>
           <input
@@ -58,9 +102,11 @@ function SearchPage() {
             required
           />
         </div>
+
         <button type="submit" className="primary-button">
           Search Flights
         </button>
+
         <div>
           <button type="button" onClick={() => navigate("/")}>
             ← Back to Home
