@@ -39,12 +39,13 @@ function SearchPage() {
 
   return (
     <div className="container">
-      <h1>Search Flights</h1>
+      <h1 className="page-header">Search Flights</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="checkbox-container">
           <label>
             <input
               type="checkbox"
+              className="roundtrip-checkbox"
               checked={isRoundTrip}
               onChange={() => setIsRoundTrip(!isRoundTrip)}
             />
@@ -80,17 +81,16 @@ function SearchPage() {
           />
         </div>
 
-        {isRoundTrip && (
-          <div>
-            <label>Return Date:</label>
-            <input
-              type="date"
-              value={returnDate}
-              onChange={(e) => setReturnDate(e.target.value)}
-              required
-            />
-          </div>
-        )}
+        <div>
+          <label>Return Date:</label>
+          <input
+            type="date"
+            value={returnDate}
+            onChange={(e) => setReturnDate(e.target.value)}
+            disabled={!isRoundTrip}
+            className={!isRoundTrip ? "disabled-input" : ""}
+          />
+        </div>
 
         <div>
           <label>Passengers:</label>
@@ -103,13 +103,12 @@ function SearchPage() {
           />
         </div>
 
-        <button type="submit" className="primary-button">
-          Search Flights
-        </button>
-
-        <div>
-          <button type="button" onClick={() => navigate("/")}>
+        <div className="button-row">
+          <button type="button" className="ghost-button" onClick={() => navigate("/")}>
             ← Back to Home
+          </button>
+          <button type="submit" className="primary-button">
+            Search Flights
           </button>
         </div>
       </form>

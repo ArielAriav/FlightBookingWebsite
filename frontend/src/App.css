@@ -183,19 +183,19 @@ body {
 }
 
 .ghost-button {
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid white;
-  color: white;
-  font-weight: bold;
-  padding: 0.4rem 0.9rem;
+  background-color: white;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+  padding: 10px 20px;
   border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .ghost-button:hover {
-  background: white;
-  color: #4a90e2;
+  background-color: #3b82f6;
+  color: white;
 }
 
 .form select {
@@ -232,6 +232,29 @@ body {
 form div {
   margin-bottom: 12px;
 }
+
+.checkbox-container {
+  margin-bottom: 15px;
+}
+
+.roundtrip-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #3b82f6;
+  vertical-align: middle;
+}
+
+.disabled-input {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
 
 
 
