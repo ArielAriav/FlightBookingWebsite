@@ -41,7 +41,7 @@ app.post('/search', async (req, res) => {
               f.flight_date, f.flight_time, f.airline
        FROM bookings b
        JOIN flights f ON b.flight_id = f.id
-       WHERE b.passport = $1 AND b.email = $2`,
+       WHERE b.passport_number = $1 AND b.email = $2`,
       [passport, email]
     );
 
