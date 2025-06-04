@@ -20,21 +20,17 @@ function ResultsPage() {
           flights.map((flight) => (
             <div key={flight.id} className="flight-card">
               <h2>
-                {flight.origin} → {flight.destination}
+                {flight.from_city} → {flight.to_city}
               </h2>
               <p>
-                <strong>Airline:</strong> {flight.airline || "N/A"}
+                <strong>Date:</strong>{" "}
+                {new Date(flight.flight_date).toLocaleDateString()}
               </p>
               <p>
-                <strong>Departure:</strong>{" "}
-                {new Date(flight.departure_time).toLocaleString()}
+                <strong>Time:</strong> {flight.flight_time}
               </p>
               <p>
-                <strong>Arrival:</strong>{" "}
-                {new Date(flight.arrival_time || flight.departure_time).toLocaleString()}
-              </p>
-              <p>
-                <strong>Price:</strong> ${flight.price}
+                <strong>Available Seats:</strong> {flight.empty_seats}
               </p>
               <div className="button-group">
                 <button
