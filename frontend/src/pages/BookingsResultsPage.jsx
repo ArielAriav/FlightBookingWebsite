@@ -20,7 +20,7 @@ function BookingResultsPage() {
               <h3>{booking.full_name}</h3>
               <p><strong>Passport:</strong> {booking.passport_number}</p>
               <p><strong>Email:</strong> {booking.email}</p>
-              <p><strong>Booking Time:</strong> {new Date(booking.booking_time).toLocaleString()}</p>
+              <p><strong>Booking Time:</strong> const formattedDate = new Date("2025-06-18T00:00:00.000Z").toLocaleDateString("he-IL");</p>
               <p><strong>From:</strong> {booking.from_city}</p>
               <p><strong>To:</strong> {booking.to_city}</p>
               <p><strong>Date:</strong> {booking.flight_date}</p>
