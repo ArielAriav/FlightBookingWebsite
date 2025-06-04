@@ -17,7 +17,7 @@ function SuccessPage() {
     );
   }
 
-  const bookingNumber = "ORD" + Math.floor(Math.random() * 1000 + 100);
+  const bookingNumber = "ORD" + Math.floor(Math.random() * 9000 + 1000);
 
   return (
     <div className="container">
@@ -28,11 +28,10 @@ function SuccessPage() {
       <div className="flight-info">
         <h2 style={{ textAlign: "center" }}>Thank you, {name} 🎉</h2>
         <p><strong>Booking Number:</strong> #{bookingNumber}</p>
-        <p><strong>Flight:</strong> {flight.from} → {flight.to}</p>
-        <p><strong>Airline:</strong> {flight.airline}</p>
-        <p><strong>Departure:</strong> {flight.departure}</p>
-        <p><strong>Arrival:</strong> {flight.arrival}</p>
-        <p><strong>Price:</strong> {flight.price}</p>
+        <p><strong>Flight:</strong> {flight.from_city} → {flight.to_city}</p>
+        <p><strong>Date:</strong> {new Date(flight.flight_date).toLocaleDateString()}</p>
+        <p><strong>Time:</strong> {flight.flight_time}</p>
+        <p><strong>Remaining Seats:</strong> {flight.empty_seats-1}</p>
 
         <div className="button-group">
           <button className="primary-button" onClick={() => navigate("/search")}>
