@@ -4,7 +4,10 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT;
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`Sales service running on port ${PORT}`);
+});
 
 app.use(cors());
 app.use(express.json());
