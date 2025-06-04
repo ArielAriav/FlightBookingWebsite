@@ -10,10 +10,34 @@ function BookingPage() {
   const [passport, setPassport] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleBooking = (e) => {
+  const handleBooking = async (e) => {
     e.preventDefault();
-    console.log({ name, passport, email, flight });
-    navigate("/success", { state: { name, flight } });
+
+    const bookingData = {
+      full_name: name,
+      passport_number: passport,
+      email,
+      flight_id: flight.id,
+    };
+
+    try {
+      const res = await fetch("https://flight-booking-website-backend-service.onrender.com/api/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (res.ok) {
+        navigate("/success", { state: { name, flight } });
+      } else {
+        alert("Booking failed. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error. Try again later.");
+    }
   };
 
   if (!flight) {
@@ -31,19 +55,17 @@ function BookingPage() {
 
       <div className="flight-card">
         <h2>
-          {flight.from} → {flight.to}
+          {flight.from_city} → {flight.to_city}
         </h2>
         <p>
-          <strong>Airline:</strong> {flight.airline}
+          <strong>Date:</strong>{" "}
+          {new Date(flight.flight_date).toLocaleDateString()}
         </p>
         <p>
-          <strong>Departure:</strong> {flight.departure}
+          <strong>Time:</strong> {flight.flight_time}
         </p>
         <p>
-          <strong>Arrival:</strong> {flight.arrival}
-        </p>
-        <p>
-          <strong>Price:</strong> {flight.price}
+          <strong>Available Seats:</strong> {flight.empty_seats}
         </p>
 
         <form onSubmit={handleBooking}>
@@ -81,7 +103,7 @@ function BookingPage() {
               onClick={() => navigate("/results")}
               className="primary-button outline"
             >
-              Back to Resultes
+              Back to Results
             </button>
           </div>
         </form>
