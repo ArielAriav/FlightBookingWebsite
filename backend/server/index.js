@@ -36,7 +36,7 @@ app.post('/search', async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT b.id, b.full_name, b.passport_number, b.email, b.booking_time, f.from_city, f.to_city,
-              f.flight_date, f.flight_time, f.airline
+              f.flight_date, f.flight_time, f.empty_seats
        FROM bookings b
        JOIN flights f ON b.flight_id = f.id
        WHERE b.passport_number = $1 AND b.email = $2`,
