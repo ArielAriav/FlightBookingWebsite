@@ -100,10 +100,10 @@ function BookingPage() {
             </button>
             <button
               type="button"
-              onClick={() => navigate("/results")}
+              onClick={() => navigate("/search")}
               className="primary-button outline"
             >
-              Back to Results
+              Back to Search
             </button>
           </div>
         </form>
