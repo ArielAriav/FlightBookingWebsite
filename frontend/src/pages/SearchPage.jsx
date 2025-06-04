@@ -15,7 +15,7 @@ function SearchPage() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/flights");
+      const response = await fetch("https://flight-booking-website-backend-service.onrender.com/flights");
       const data = await response.json();
       console.log("Flights data from server:", data);
 
