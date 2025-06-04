@@ -19,7 +19,7 @@ function ViewBookingsPage() {
     const data = await response.json();
 
     if (response.ok) {
-      navigate("/bookings/results", { state: { results: data } });
+      navigate("/bookings-results", { state: { results: data } });
     } else {
       alert(data.error || "Search failed.");
     }

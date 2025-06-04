@@ -1,13 +1,9 @@
-// server/index.js
 const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => {
-  console.log(`Sales service running on port ${PORT}`);
-});
 
 app.use(cors());
 app.use(express.json());
@@ -19,7 +15,6 @@ const pool = new Pool({
     rejectUnauthorized: false, // נדרש עבור Render
   },
 });
-
 
 // GET all flights
 app.get('/flights', async (req, res) => {
@@ -80,4 +75,8 @@ app.post("/api/bookings", async (req, res) => {
     console.error(err);
     res.status(500).json({ error: "Server error" });
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`service running on port ${PORT}`);
 });
