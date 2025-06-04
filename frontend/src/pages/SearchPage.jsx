@@ -17,6 +17,8 @@ function SearchPage() {
     try {
       const response = await fetch("http://localhost:3001/flights");
       const data = await response.json();
+      console.log("Flights data from server:", data);
+
 
       navigate("/results", {
         state: {

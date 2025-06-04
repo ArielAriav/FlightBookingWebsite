@@ -4,24 +4,24 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const app = express();
-const port = 3001;
+const port = 'https://flight-booking-website-backend-service.onrender.com' || 3001;
 
 app.use(cors());
 app.use(express.json());
 
 // PostgreSQL connection setup
 const pool = new Pool({
-  user: 'user',
-  host: 'localhost',
-  database: 'flightsdb',
-  password: 'password',
-  port: 5434,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // נדרש עבור Render
+  },
 });
+
 
 // GET all flights
 app.get('/flights', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM flights ORDER BY departure_time');
+    const result = await pool.query('SELECT * FROM flights');
     res.json(result.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });

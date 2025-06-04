@@ -1,11 +1,11 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
 const pool = new Pool({
-  user: 'user',
-  host: 'localhost',
-  database: 'flightsdb',
-  password: 'password',
-  port: 5432, // או 5433 אם שינית בדוקר
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // נדרש עבור Render
+  },
 });
 
 module.exports = pool;
