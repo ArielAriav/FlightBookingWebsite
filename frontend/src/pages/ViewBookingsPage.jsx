@@ -10,7 +10,7 @@ function ViewBookingsPage() {
   e.preventDefault();
 
   try {
-    const response = await fetch("http://localhost:3001/search", {
+    const response = await fetch("https://flight-booking-website-backend-service.onrender.com/search", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ passport, email }),
