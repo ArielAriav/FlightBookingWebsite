@@ -37,6 +37,9 @@ function SuccessPage() {
           <button className="primary-button" onClick={() => navigate("/search")}>
             Search Again
           </button>
+          <button className="primary-button" onClick={() => navigate("/")}>
+            Back To Home
+          </button>
         </div>
       </div>
     </div>
