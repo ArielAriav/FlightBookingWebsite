@@ -5,6 +5,8 @@ function BookingPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const flight = location.state;
+  const passengers = location.state?.passengers || 1;
+
 
   const [name, setName] = useState("");
   const [passport, setPassport] = useState("");
@@ -18,7 +20,9 @@ function BookingPage() {
       passport_number: passport,
       email,
       flight_id: flight.id,
+      passengers: passengers,
     };
+
 
     try {
       const res = await fetch("https://flight-booking-website-backend-service.onrender.com/api/bookings", {
@@ -30,7 +34,7 @@ function BookingPage() {
       });
 
       if (res.ok) {
-        navigate("/success", { state: { name, flight } });
+        navigate("/success", { state: { name, flight, passengers } });
       } else {
         alert("Booking failed. Please try again.");
       }

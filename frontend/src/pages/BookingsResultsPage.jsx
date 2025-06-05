@@ -31,7 +31,7 @@ function BookingResultsPage() {
               <p><strong>To:</strong> {booking.to_city}</p>
               <p><strong>Date:</strong> {new Date(booking.flight_date).toLocaleDateString("he-IL")}</p>
               <p><strong>Time:</strong> {booking.flight_time}</p>
-              <p><strong>Seats Left:</strong> {booking.empty_seats}</p>
+              <p><strong>Seats:</strong> {booking.seats}</p>
             </div>
           ))}
         </div>

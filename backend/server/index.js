@@ -35,7 +35,7 @@ app.post('/search', async (req, res) => {
 
   try {
     const result = await pool.query(
-      `SELECT b.id, b.full_name, b.passport_number, b.email, b.booking_time, f.from_city, f.to_city,
+      `SELECT b.id, b.full_name, b.passport_number, b.email, b.booking_time, b.seats, f.from_city, f.to_city,
               f.flight_date, f.flight_time, f.empty_seats
        FROM bookings b
        JOIN flights f ON b.flight_id = f.id
@@ -51,23 +51,23 @@ app.post('/search', async (req, res) => {
 });
 
 app.post("/api/bookings", async (req, res) => {
-  const { flight_id, full_name, passport_number, email } = req.body;
+  const { flight_id, full_name, passport_number, email, passengers } = req.body;
 
-  if (!flight_id || !full_name || !passport_number || !email) {
+  if (!flight_id || !full_name || !passport_number || !email || !passengers) {
     return res.status(400).json({ error: "Missing booking fields" });
   }
 
   try {
     await pool.query(
-      `INSERT INTO bookings (flight_id, full_name, passport_number, email)
-       VALUES ($1, $2, $3, $4)`,
-      [flight_id, full_name, passport_number, email]
+      `INSERT INTO bookings (flight_id, full_name, passport_number, email, seats)
+       VALUES ($1, $2, $3, $4, $5)`,
+      [flight_id, full_name, passport_number, email, passengers]
     );
 
     // אפשר גם להפחית מושב ריק בטיסה
     await pool.query(
-      `UPDATE flights SET empty_seats = empty_seats - 1 WHERE id = $1 AND empty_seats > 0`,
-      [flight_id]
+      `UPDATE flights SET empty_seats = empty_seats - $2 WHERE id = $1 AND empty_seats >= $2`,
+      [flight_id, passengers]
     );
 
     res.status(201).json({ message: "Booking successful" });

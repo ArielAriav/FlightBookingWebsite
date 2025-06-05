@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 function SuccessPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { name, flight } = location.state || {};
+  const { name, flight, passengers } = location.state || {};
 
   if (!flight || !name) {
     return (
@@ -31,7 +31,7 @@ function SuccessPage() {
         <p><strong>Flight:</strong> {flight.from_city} → {flight.to_city}</p>
         <p><strong>Date:</strong> {new Date(flight.flight_date).toLocaleDateString()}</p>
         <p><strong>Time:</strong> {flight.flight_time}</p>
-        <p><strong>Remaining Seats:</strong> {flight.empty_seats-1}</p>
+        <p><strong>Seats:</strong> {passengers}</p>
 
         <div className="button-group">
           <button className="primary-button" onClick={() => navigate("/search")}>

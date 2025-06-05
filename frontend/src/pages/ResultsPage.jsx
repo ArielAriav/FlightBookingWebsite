@@ -54,12 +54,15 @@ function ResultsPage() {
               </p>
               <div className="button-group">
                 {flight.empty_seats > 0 ? (
-                  <button
-                    onClick={() => navigate("/booking", { state: flight })}
+                  <button onClick={() => navigate("/booking", {
+                    state: {...flight, passengers: search.passengers || 1},
+                    })
+                    }
                     className="primary-button"
                   >
                     Select
                   </button>
+
                 ) : (
                   <span className="no-seats-label">No seats available</span>
                 )}

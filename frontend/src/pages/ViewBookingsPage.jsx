@@ -59,7 +59,7 @@ function ViewBookingsPage() {
 
         <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
           <button className="primary-button" type="submit">
-            Search Bookings
+            View Bookings
           </button>
         </div>
 
