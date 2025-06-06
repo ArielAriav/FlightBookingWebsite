@@ -1,0 +1,51 @@
+name: Test and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run frontend tests
+        run: |
+          if [ -f "./frontend/src/App.test.jsx" ]; then
+            npm run test -- --watchAll=false
+          else
+            echo "No frontend tests found"
+          fi
+
+      - name: Run backend tests
+        run: |
+          if [ -f "./backend/tests/app.test.js" ]; then
+            cd backend
+            npm install
+            npm test
+          else
+            echo "No backend tests found"
+          fi
+
+  deploy-backend:
+    needs: test
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Render (or other)
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
