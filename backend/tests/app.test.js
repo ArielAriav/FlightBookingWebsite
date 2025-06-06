@@ -1,8 +1,8 @@
 const request = require("supertest");
-const app = require("../server/index"); // או הנתיב המדויק לקובץ שמייצא את האפליקציה
+const app = require("../server/app");
 
 describe("GET /api/flights", () => {
-  it("should return flights array", async () => {
+  it("should return an array (possibly empty)", async () => {
     const res = await request(app).get("/api/flights");
     expect(res.statusCode).toBe(200);
     expect(Array.isArray(res.body)).toBe(true);
