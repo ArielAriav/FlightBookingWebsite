@@ -1,12 +1,10 @@
-const pool = require('./db');
+const request = require("supertest");
+const app = require("../app");
 
-(async () => {
-  try {
-    const res = await pool.query('SELECT NOW()');
-    console.log('Connected successfully:', res.rows[0]);
-  } catch (err) {
-    console.error('Connection failed:', err);
-  } finally {
-    pool.end();
-  }
-})();
+describe("GET /api/flights", () => {
+  it("should return an array (possibly empty)", async () => {
+    const res = await request(app).get("/api/flights");
+    expect(res.statusCode).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+  });
+});

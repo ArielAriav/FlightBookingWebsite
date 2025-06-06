@@ -17,13 +17,18 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install frontend dependencies
+        run: |
+          if [ -d "./frontend" ]; then
+            cd frontend
+            npm ci
+          fi
 
       - name: Run frontend tests
         run: |
           if [ -f "./frontend/src/App.test.jsx" ]; then
-            npm run test -- --watchAll=false
+            cd frontend
+            npm test -- --watchAll=false
           else
             echo "No frontend tests found"
           fi
@@ -32,8 +37,8 @@ jobs:
         run: |
           if [ -f "./backend/tests/app.test.js" ]; then
             cd backend
-            npm install
-            npm test
+            npm ci
+            npm test || exit 1
           else
             echo "No backend tests found"
           fi
