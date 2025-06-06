@@ -1,6 +1,5 @@
-// backend/tests/app.test.js
 const request = require("supertest");
-const app = require("../server"); // הנתיב לקובץ Express שלך
+const app = require("../server/index"); // או הנתיב המדויק לקובץ שמייצא את האפליקציה
 
 describe("GET /api/flights", () => {
   it("should return flights array", async () => {
