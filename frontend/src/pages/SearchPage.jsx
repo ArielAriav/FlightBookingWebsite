@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { displayAirport } from "../airportData";
 
 function SearchPage() {
   const [from, setFrom] = useState("");
@@ -8,8 +9,27 @@ function SearchPage() {
   const [returnDate, setReturnDate] = useState("");
   const [passengers, setPassengers] = useState(1);
   const [isRoundTrip, setIsRoundTrip] = useState(false);
+  const [airports, setAirports] = useState([]);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetchAirports() {
+      try {
+        const res = await fetch(
+          "https://flight-booking-website-backend-service.onrender.com/flights"
+        );
+        const flights = await res.json();
+        const unique = Array.from(
+          new Set(flights.flatMap((f) => [f.from_city, f.to_city]))
+        );
+        setAirports(unique);
+      } catch (err) {
+        console.error("Error fetching airports:", err);
+      }
+    }
+    fetchAirports();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,20 +77,26 @@ function SearchPage() {
 
         <div>
           <label>From:</label>
-          <input
-            value={from}
-            onChange={(e) => setFrom(e.target.value)}
-            
-          />
+          <select value={from} onChange={(e) => setFrom(e.target.value)}>
+            <option value="">Select origin</option>
+            {airports.map((ap) => (
+              <option key={ap} value={ap}>
+                {displayAirport(ap)}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div>
           <label>To:</label>
-          <input
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
-            
-          />
+          <select value={to} onChange={(e) => setTo(e.target.value)}>
+            <option value="">Select destination</option>
+            {airports.map((ap) => (
+              <option key={ap} value={ap}>
+                {displayAirport(ap)}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div>

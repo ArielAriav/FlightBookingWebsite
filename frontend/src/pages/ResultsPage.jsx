@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { normalizeAirport, displayAirport } from "../airportData";
 
 function ResultsPage() {
   const navigate = useNavigate();
@@ -10,10 +11,12 @@ function ResultsPage() {
 
   const filteredFlights = flights.filter((flight) => {
     const matchesFrom =
-      !search.from || flight.from_city.toLowerCase() === search.from.toLowerCase();
+      !search.from ||
+      normalizeAirport(flight.from_city) === normalizeAirport(search.from);
 
     const matchesTo =
-      !search.to || flight.to_city.toLowerCase() === search.to.toLowerCase();
+      !search.to ||
+      normalizeAirport(flight.to_city) === normalizeAirport(search.to);
 
     const matchesDeparture =
       !search.departureDate ||
@@ -40,7 +43,7 @@ function ResultsPage() {
           filteredFlights.map((flight) => (
             <div key={flight.id} className="flight-card">
               <h2>
-                {flight.from_city} → {flight.to_city}
+               {displayAirport(flight.from_city)} → {displayAirport(flight.to_city)}
               </h2>
               <p>
                 <strong>Date:</strong>{" "}

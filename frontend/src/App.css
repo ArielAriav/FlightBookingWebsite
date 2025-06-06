@@ -1,27 +1,25 @@
-/* בסיס */
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f2f4f8;
   color: #333;
   margin: 0;
   padding: 0;
+  background-attachment: fixed;
 }
 
-/* כותרות */
 h1, h2 {
   color: #1a1a1a;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-/* מיכל כללי */
 .container {
   padding: 2rem;
   max-width: 900px;
   margin: auto;
 }
 
-/* טופס */
 form {
   background-color: #ffffff;
   padding: 2rem;
@@ -50,7 +48,15 @@ input {
   font-size: 1rem;
 }
 
-/* כפתורים */
+select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
 button {
   background-color: #4a90e2;
   color: white;
@@ -111,6 +117,7 @@ button:hover {
 .flight-info {
   background-color: #ffffff;
   padding: 1.5rem;
+  margin-bottom: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   width: 100%;
@@ -178,7 +185,7 @@ body {
   padding: 0.5rem 1.2rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   text-align: center;
 }
 
@@ -213,7 +220,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px); /* גובה מסך פחות כותרת אם יש */
+  height: calc(100vh - 60px); 
   text-align: center;
 }
 
@@ -256,16 +263,18 @@ form div {
 }
 
 .result-card {
-  background-color: rgba(255, 255, 255, 0.85); /* לבן שקוף */
+  background-color: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* צל עדין */
-  backdrop-filter: blur(4px); /* אם תרצה אפקט מודרני */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  backdrop-filter: blur(4px); 
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
+
+
 
 
 
