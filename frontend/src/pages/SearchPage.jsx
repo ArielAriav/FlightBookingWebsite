@@ -6,9 +6,7 @@ function SearchPage() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [departureDate, setDepartureDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
   const [passengers, setPassengers] = useState(1);
-  const [isRoundTrip, setIsRoundTrip] = useState(false);
   const [airports, setAirports] = useState([]);
 
   const navigate = useNavigate();
@@ -47,9 +45,7 @@ function SearchPage() {
             from,
             to,
             departureDate,
-            returnDate,
             passengers,
-            isRoundTrip,
           },
         },
       });
@@ -63,17 +59,6 @@ function SearchPage() {
     <div className="container">
       <h1 className="page-header">Search Flights</h1>
       <form onSubmit={handleSubmit}>
-        <div className="checkbox-container">
-          <label>
-            <input
-              type="checkbox"
-              className="roundtrip-checkbox"
-              checked={isRoundTrip}
-              onChange={() => setIsRoundTrip(!isRoundTrip)}
-            />
-            &nbsp;Round Trip
-          </label>
-        </div>
 
         <div>
           <label>From:</label>
@@ -109,16 +94,6 @@ function SearchPage() {
           />
         </div>
 
-        <div>
-          <label>Return Date:</label>
-          <input
-            type="date"
-            value={returnDate}
-            onChange={(e) => setReturnDate(e.target.value)}
-            disabled={!isRoundTrip}
-            className={!isRoundTrip ? "disabled-input" : ""}
-          />
-        </div>
 
         <div>
           <label>Passengers:</label>
