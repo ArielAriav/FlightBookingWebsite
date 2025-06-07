@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../db'); // או כל חיבור אחר ל-PostgreSQL
+const pool = require('../server/db');
+
+
 
 router.get('/flights', async (req, res) => {
   try {
