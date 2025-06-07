@@ -1,8 +1,13 @@
+# Dockerfile for frontend (Vite)
 FROM node:20
+
 WORKDIR /app
-COPY . .
+
+COPY package*.json ./
 RUN npm install
-RUN npm run build
-RUN npm install -g serve
+
+COPY . .
+
 EXPOSE 5173
-CMD ["serve", "-s", "dist"]
+
+CMD ["npm", "run", "dev", "--", "--host"]
