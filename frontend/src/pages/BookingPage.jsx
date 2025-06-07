@@ -7,7 +7,6 @@ function BookingPage() {
   const flight = location.state;
   const passengers = location.state?.passengers || 1;
 
-
   const [name, setName] = useState("");
   const [passport, setPassport] = useState("");
   const [email, setEmail] = useState("");
@@ -23,15 +22,17 @@ function BookingPage() {
       passengers: passengers,
     };
 
-
     try {
-      const res = await fetch("https://flight-booking-website-backend-service.onrender.com/api/bookings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookingData),
-      });
+      const res = await fetch(
+        "https://flight-booking-website-backend-service.onrender.com/api/bookings",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(bookingData),
+        }
+      );
 
       if (res.ok) {
         navigate("/success", { state: { name, flight, passengers } });
@@ -72,7 +73,7 @@ function BookingPage() {
           <strong>Available Seats:</strong> {flight.empty_seats}
         </p>
 
-        <form onSubmit={handleBooking}>
+        <form onSubmit={handleBooking} className="booking-form">
           <div>
             <label>Full Name:</label>
             <input
