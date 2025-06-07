@@ -91,3 +91,51 @@ flight-booking-webapp/
 
 Final Project – Introduction to DevOps  
 SCE College of Engineering
+
+## 🧪 Running Cypress End-to-End Tests
+
+This project includes end-to-end tests using [Cypress](https://www.cypress.io/) to ensure that the main user flows (searching for a flight, booking, and viewing bookings) work correctly.
+
+### 📁 Test File Location
+
+All Cypress test files are located inside:
+
+```
+frontend/cypress/e2e/
+```
+
+The main test file is:
+```
+full-flow.cy.js
+```
+
+### ▶️ How to Run the Tests
+
+1. **Start the application**  
+   First, make sure the application is up and running locally:
+
+   ```bash
+   docker compose up
+   ```
+
+2. **Open a new terminal and navigate to the frontend folder**:
+
+   ```bash
+   cd frontend
+   ```
+
+3. **Install Cypress (if you haven’t yet)**:
+
+   ```bash
+   npm install
+   ```
+
+4. **Launch the Cypress Test Runner**:
+
+   ```bash
+   npx cypress open
+   ```
+
+5. **In the Cypress UI**, click on the file named `full-flow.cy.js` to start the test.
+
+> ✅ **Note**: Cypress tests expect the frontend to be running on `http://localhost:5173`. Make sure this is consistent with your development environment.
