@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const navigate = useNavigate();
+    useEffect(() => {
+    fetch("https://flight-booking-website-backend-service.onrender.com/ping")
+      .then((res) => console.log("Pinged backend, status:", res.status))
+      .catch((err) => console.error("Error pinging backend:", err));
+  }, []);
 
   return (
     <div className="container home-page">
