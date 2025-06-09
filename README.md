@@ -1,5 +1,7 @@
 # ✈️ Flight Booking WebApp
 
+*Last updated: June 09, 2025*
+
 A complete flight booking system including a frontend UI, backend API, and database – all containerized using Docker.
 
 ---
@@ -39,6 +41,24 @@ docker compose up --build
 
 ---
 
+## 🌐 Live Deployment on Render
+
+The full website is deployed and available live:
+
+🔗 [https://flightbookingwebsite.onrender.com](https://flightbookingwebsite.onrender.com)
+
+### ⚙️ CI/CD Pipeline
+
+Every push to the GitHub repository automatically triggers a deployment process using **GitHub Actions**.
+
+- ✅ Frontend and backend are built and tested on push
+- 🚀 Deployment to [Render](https://render.com) occurs automatically
+- 📦 Database is managed via persistent PostgreSQL service on Render
+
+> No need for manual redeployment — the CI/CD workflow ensures that every change is reflected online!
+
+---
+
 ## 🧪 Running Tests
 
 ### Backend (Express)
@@ -71,34 +91,6 @@ npm test
   - Displaying flight and booking data
   - User interaction and form validation
   - Routing behavior
-
----
-
-## ⚙️ Technologies Used
-
-- Node.js 20  
-- Express.js  
-- React + Vite  
-- PostgreSQL 16  
-- Docker Compose (v3.9)
-
----
-
-## 📁 Project Structure
-
-```
-flight-booking-webapp/
-├── backend/
-│   ├── index.js
-│   ├── routes/
-│   ├── tests/
-├── frontend/
-│   ├── src/
-│   ├── app.test.jsx
-├── docker-compose.yml
-├── start-dev.bat
-└── README.md
-```
 
 ---
 
@@ -170,9 +162,8 @@ start-dev.bat
 
 ### ⚙️ What it Does
 
-- Opens two terminal windows:
-  1. One for starting the backend Express server (`cd backend && npm start`)
-  2. One for starting the frontend React app (`cd frontend && npm run dev`)
+- Stops any existing Docker containers
+- Builds and restarts the entire Dockerized environment
 
 ### 🏃‍♀️ How to Run It
 
@@ -184,7 +175,35 @@ start-dev.bat
    ./start-dev.bat
    ```
 
-> 💡 Useful for development and debugging outside the Docker environment.
+> 💡 Useful for quickly testing the full system with one command.
+
+---
+
+## 📁 Project Structure
+
+```
+flight-booking-webapp/
+├── backend/
+│   ├── index.js
+│   ├── routes/
+│   ├── tests/
+├── frontend/
+│   ├── src/
+│   ├── app.test.jsx
+├── docker-compose.yml
+├── start-dev.bat
+└── README.md
+```
+
+---
+
+## ⚙️ Technologies Used
+
+- Node.js 20  
+- Express.js  
+- React + Vite  
+- PostgreSQL 16  
+- Docker Compose (v3.9)
 
 ---
 
